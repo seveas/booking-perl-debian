@@ -1,0 +1,9 @@
+#!/bin/sh -e
+
+if [ "$1" = configure ]
+then
+    update-alternatives --install /usr/local/bin/booking-perl booking-perl /usr/local/booking-perl/5.20.2/bin/perl 60 \
+        --slave /usr/local/bin/booking-cpanm booking-cpanm /usr/local/booking-perl/5.20.2/bin/cpanm
+fi
+
+exit 0

@@ -1,0 +1,54 @@
+#!/usr/bin/make -f
+
+PREFIX = /usr/local/booking-perl/5.20.2
+unexport LC_PAPER
+unexport LC_ADDRESS
+unexport LC_MONETARY
+unexport LC_NUMERIC
+unexport LC_TELEPHONE
+unexport LC_IDENTIFICATION
+unexport LC_MEASUREMENT
+unexport LC_TIME
+unexport LC_NAME
+unexport LANG
+unexport LANGUAGE
+
+%:
+	dh $@
+
+override_dh_auto_configure:
+	./Configure -des \
+		-DSILENT_NO_TAINT_SUPPORT \
+		-Dprefix=$(PREFIX) \
+		-Uusevendorprefix \
+		-Dsiteprefix=$(PREFIX) \
+		-Dinstallprefix=$(PREFIX) \
+		-Dinstallstyle="lib" \
+		-Darchlib=$(PREFIX)/lib \
+		-Dman1dir=$(PREFIX)/man/man1 \
+		-Dman3dir=$(PREFIX)/man/man3 \
+		-Dprivlib=$(PREFIX)/lib \
+		-Dsitearch=$(PREFIX)/site/lib \
+		-Dsitebin=$(PREFIX)/site/bin \
+		-Dsitelib=$(PREFIX)/site/lib \
+		-Dsiteman1dir=$(PREFIX)/site/man/man1 \
+		-Dsiteman3dir=$(PREFIX)/site/man/man3 \
+		-Dlibpth="$(PREFIX)/lib " \
+		-Dglibpth="$(PREFIX)/lib " \
+		-Dscriptdir="$(PREFIX)/bin" \
+		-Uinstallusrbinperl \
+		-Duseshrplib \
+		-Dusesitecustomize \
+		-Di_db \
+		-A 'prepend:libswanted=pthread '
+
+override_dh_auto_test:
+	TEST_JOBS=4 make test_harness
+
+override_dh_auto_install:
+	LD_PRELOAD= dh_auto_install
+	wget http://cpanmin.us -O cpanm
+	sed -e '1s@.*@#!/usr/local/booking-perl/5.20.2/bin/perl@' -i cpanm
+	install -m755 cpanm debian/booking-perl5202/$(PREFIX)/bin/cpanm
+
+override_dh_usrlocal:

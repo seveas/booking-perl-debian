@@ -1,0 +1,27 @@
+Source: booking-perl5202
+Section: perl
+Priority: standard
+Maintainer: Dennis Kaarsemaker <dennis.kaarsemaker@booking.com>
+Standards-Version: 3.9.6
+Homepage: http://dev.perl.org/perl5/
+Build-Depends: file, cpio, libdb-dev, libgdbm-dev, netbase [!hurd-any],
+ procps [!hurd-any], zlib1g-dev | libz-dev, libbz2-dev, dpkg-dev (>= 1.16.0),
+ libc6-dev (>= 2.19-9) [s390x], debhelper (>= 9.0.0), wget, ca-certificates
+
+Package: booking-perl5202
+Priority: optional
+Architecture: any
+Pre-Depends: ${shlibs:Depends}, dpkg (>= 1.17.17), libc6-dev | libc-dev
+Recommends: netbase, rename
+Description: Larry Wall's Practical Extraction and Report Language
+ Perl is a highly capable, feature-rich programming language with over
+ 20 years of development. Perl 5 runs on over 100 platforms from
+ portables to mainframes. Perl is suitable for both rapid prototyping
+ and large scale development projects.
+ .
+ Perl 5 supports many programming styles, including procedural,
+ functional, and object-oriented. In addition to this, it is supported
+ by an ever-growing collection of reusable modules which accelerate
+ development. Some of these modules include Web frameworks, database
+ integration, networking protocols, and encryption. Perl provides
+ interfaces to C and C++ for custom extension development.
