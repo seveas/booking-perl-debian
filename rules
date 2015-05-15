@@ -1,6 +1,6 @@
 #!/usr/bin/make -f
 
-PREFIX = /usr/local/booking-perl/5.20.2
+PREFIX = /usr/local/booking-perl/5.18.2
 unexport LC_PAPER
 unexport LC_ADDRESS
 unexport LC_MONETARY
@@ -49,7 +49,7 @@ override_dh_auto_test:
 override_dh_auto_install:
 	LD_PRELOAD= dh_auto_install
 	wget http://cpanmin.us -O cpanm
-	sed -e '1s@.*@#!/usr/local/booking-perl/5.20.2/bin/perl@' -i cpanm
-	install -m755 cpanm debian/booking-perl5202/$(PREFIX)/bin/cpanm
+	sed -e '1s@.*@#!/usr/local/booking-perl/5.18.2/bin/perl@' -i cpanm
+	install -m755 cpanm debian/booking-perl5182/$(PREFIX)/bin/cpanm
 
 override_dh_usrlocal:
