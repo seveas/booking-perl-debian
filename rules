@@ -39,6 +39,7 @@ override_dh_auto_configure:
 		-Uinstallusrbinperl \
 		-Duseshrplib \
 		-Dusesitecustomize \
+		-UDEBUGGING \
 		-Di_db \
 		-A 'prepend:libswanted=pthread '
 
