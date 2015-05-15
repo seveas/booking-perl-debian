@@ -53,3 +53,7 @@ override_dh_auto_install:
 	install -m755 cpanm debian/booking-perl5182/$(PREFIX)/bin/cpanm
 
 override_dh_usrlocal:
+
+override_dh_clean:
+	dh_clean -Xcpan/Module-Pluggable/t/lib/EditorJunk/Plugin/Bar.pm~
+
