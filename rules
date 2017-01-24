@@ -44,12 +44,11 @@ override_dh_auto_configure:
 		-A 'prepend:libswanted=pthread '
 
 override_dh_auto_test:
+	sed -e 's/porting//' -i t/harness
 	TEST_JOBS=4 make test_harness
 
 override_dh_auto_install:
 	LD_PRELOAD= dh_auto_install
-	wget http://cpanmin.us -O cpanm
-	sed -e '1s@.*@#!/usr/local/booking-perl/5.24.1/bin/perl@' -i cpanm
-	install -m755 cpanm debian/booking-perl5241/$(PREFIX)/bin/cpanm
+	install -m755 debian/cpanm debian/booking-perl5241/$(PREFIX)/bin/cpanm
 
 override_dh_usrlocal:

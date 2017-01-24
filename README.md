@@ -46,9 +46,7 @@ This will build booking-perl5241, which corresponds to a vanilla Perl 5.24.1
     sudo pbuilder create
     ```
 
-- Build a binary package. Beware: the build step will try to download an
-  additional source file with wget. If you are behind a proxy, edit the
-  debian/rules file as appropriate *before* building the source package above.
+- Build a binary package.
 
     `sudo pbuilder build ../booking-perl5241_5.24.1-1.dsc`
 
