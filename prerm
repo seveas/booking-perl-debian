@@ -2,7 +2,7 @@
 
 if [ "$1" != upgrade ]
 then
-    update-alternatives --remove booking-perl /usr/local/booking-perl/5.20.2/bin/perl
+    update-alternatives --remove booking-perl /usr/local/booking-perl/5.24.1/bin/perl
 fi
 
 exit 0
